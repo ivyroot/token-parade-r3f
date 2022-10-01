@@ -6,6 +6,7 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import { AddressInput } from './components/dom/AddressInput.tsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { NftGroup } from './components/canvas/NftGroup'
 
 const queryClient = new QueryClient()
 
@@ -17,24 +18,20 @@ function App() {
   }
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <div className='flex'>
-          <h1 className='mx-8 my-2'>Token Parade</h1>
-        </div>
-        <div className='flex justify-center'>
-          <AddressInput setFocusedNft={setFocusedNft} onRestart={onRestart}></AddressInput>
-        </div>
-      </QueryClientProvider>
+      <div className='flex'>
+        <h1 className='mx-8 my-2'>Token Parade</h1>
+      </div>
+      <div className='flex justify-center'>
+        <AddressInput setFocusedNft={setFocusedNft} onRestart={onRestart}></AddressInput>
+      </div>
 
       <div id="canvas-container">
         <Canvas>
-          <mesh>
-            <boxGeometry args={[2, 2, 2]} />
-            <meshPhysicalMaterial color='hotpink' />
-          </mesh>
-          <ambientLight intensity={0.1} />
-          <directionalLight color="white" position={[0, 0, 5]} />
-          <OrbitControls />
+          <QueryClientProvider client={queryClient}>
+            <NftGroup initialPos={[0, 0, 0]} setFocusedNft={setFocusedNft} startedAt={startedAt} />
+            <ambientLight />
+            <pointLight position={[10, 10, 10]} />
+          </QueryClientProvider>
         </Canvas>
       </div>
     </>
