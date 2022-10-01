@@ -3,15 +3,18 @@ import './App.css';
 import ReactDOM from 'react-dom'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
-import { AddressInput } from './components/AddressInput'
+import { AddressInput } from './components/dom/AddressInput.tsx'
 
 function App() {
   return (
     <>
-      <div className='flex justify-around'>
-        <h1 className='text-center'>Token Parade</h1>
+      <div className='flex'>
+        <h1 className='mx-8 my-2'>Token Parade</h1>
       </div>
-      <AddressInput></AddressInput>
+      <div className='flex justify-center'>
+        <AddressInput></AddressInput>
+      </div>
+
       <div id="canvas-container">
         <Canvas>
           <mesh>
