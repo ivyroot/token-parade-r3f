@@ -3,7 +3,7 @@ import './App.css';
 import ReactDOM from 'react-dom'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
-
+import { AddressInput } from './components/AddressInput'
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
       <div className='flex justify-around'>
         <h1 className='text-center'>Token Parade</h1>
       </div>
+      <AddressInput></AddressInput>
       <div id="canvas-container">
         <Canvas>
           <mesh>
