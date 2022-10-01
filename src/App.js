@@ -5,6 +5,9 @@ import { useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import { AddressInput } from './components/dom/AddressInput.tsx'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 
 function App() {
   const [focusedNft, setFocusedNft] = useState(null)
@@ -14,12 +17,14 @@ function App() {
   }
   return (
     <>
-      <div className='flex'>
-        <h1 className='mx-8 my-2'>Token Parade</h1>
-      </div>
-      <div className='flex justify-center'>
-        <AddressInput setFocusedNft={setFocusedNft} onRestart={onRestart}></AddressInput>
-      </div>
+      <QueryClientProvider client={queryClient}>
+        <div className='flex'>
+          <h1 className='mx-8 my-2'>Token Parade</h1>
+        </div>
+        <div className='flex justify-center'>
+          <AddressInput setFocusedNft={setFocusedNft} onRestart={onRestart}></AddressInput>
+        </div>
+      </QueryClientProvider>
 
       <div id="canvas-container">
         <Canvas>
