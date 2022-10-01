@@ -11,12 +11,10 @@ export const AddressInput = (props) => {
     if (addressInput !== addressValue) {
       setAddressValue(addressInput)
       setIsLoading(true)
-    } else if (props.onRestart) {
+    } else {
       props.onRestart();
     }
-    if (props.setFocusedNft) {
-        props.setFocusedNft(null)
-    }
+    props.setFocusedNft(null)
   }
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
