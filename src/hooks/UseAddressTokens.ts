@@ -19,7 +19,7 @@ export interface NftTokenResponse {
 }
 
 const parseSimpleHashInfo = (token: any, address: string): NftTokenInfo => {
-    const ownerHistory = token.owners.find(t => t.owner_address == address)
+    const ownerHistory = token.owners.find(t => t.owner_address === address)
     const purchaseDate = ownerHistory ? ownerHistory.first_acquired_date : '2022-09-27T00:00:00.000Z'
     const purchaseTimestamp = Date.parse(purchaseDate)
     const dateObject = new Date(purchaseTimestamp);
