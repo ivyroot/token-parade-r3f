@@ -7,6 +7,7 @@ import { OrbitControls } from '@react-three/drei'
 import { AddressInput } from './components/dom/AddressInput.tsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { NftGroup } from './components/canvas/NftGroup'
+import { ParadeInfo } from './components/dom/ParadeInfo'
 
 const queryClient = new QueryClient()
 
@@ -20,6 +21,9 @@ function App() {
     <>
       <div className='flex'>
         <h1 className='mx-8 my-2'>Token Parade</h1>
+      </div>
+      <div className=''>
+        <ParadeInfo focusedNft={focusedNft} />
       </div>
       <div className='flex justify-center'>
         <AddressInput setFocusedNft={setFocusedNft} onRestart={onRestart}></AddressInput>
