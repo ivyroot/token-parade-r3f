@@ -19,7 +19,7 @@ export const NftGroup = (props) => {
 
     useFrame((state, delta) => {
         if (groupMesh.current) {
-            groupMesh.current.position.z = groupMesh.current.position.z += (delta * 0.25)
+            groupMesh.current.position.z = groupMesh.current.position.z += (delta * 0.33)
         }
     })
     const paradeOwner = UseParadeState((state) => state.addressValue)
@@ -37,7 +37,7 @@ export const NftGroup = (props) => {
 
     const nftDisplayArray = tokenResults.nfts.map((tokenInfo, index) => {
         const column = index % 3;
-        const columnOffset = 2.25 + column * 3.5;
+        const columnOffset = column * 3.5 - 3.5;
         const row = Math.floor(index / 3);
         const rowOffset = row * -4;
         return <NftDisplay key={tokenInfo.id} setFocusedNft={props.setFocusedNft} tokenInfo={tokenInfo} initialPos={[columnOffset, 0, rowOffset]} />

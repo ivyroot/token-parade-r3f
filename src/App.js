@@ -8,6 +8,7 @@ import { AddressInput } from './components/dom/AddressInput.tsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { NftGroup } from './components/canvas/NftGroup'
 import { ParadeInfo } from './components/dom/ParadeInfo'
+import { DefaultCamera } from './components/canvas/DefaultCamera'
 
 const queryClient = new QueryClient()
 
@@ -29,6 +30,7 @@ function App() {
 
       <div className='border-emerald-100 border-2 absolute top-0 h-screen w-screen -z-10'>
         <Canvas>
+          <DefaultCamera />
           <OrbitControls />
           <QueryClientProvider client={queryClient}>
             <NftGroup initialPos={[0, 0, 0]} setFocusedNft={setFocusedNft} startedAt={startedAt} />
