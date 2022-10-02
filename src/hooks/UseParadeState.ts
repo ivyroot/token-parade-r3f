@@ -9,6 +9,8 @@ export interface ParadeState {
     setAddressHex: (val: string) => void
     isLoading: boolean
     setIsLoading: (val: boolean) => void
+    displayInput: boolean
+    setDisplayInput: (val: boolean) => void
 }
 
 export const UseParadeState = create<ParadeState>((set) => ({
@@ -19,5 +21,7 @@ export const UseParadeState = create<ParadeState>((set) => ({
     addressHex: null,
     setAddressHex: (val: string) => set((state) => ({ addressHex: val })),
     isLoading: false,
-    setIsLoading: (val: boolean) => set((state) => ({ isLoading: val }))
+    setIsLoading: (val: boolean) => set((state) => ({ isLoading: val })),
+    displayInput: true,
+    setDisplayInput: (val: boolean) => set((state) => ({ displayInput: val })),
 }))
