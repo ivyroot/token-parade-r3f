@@ -25,7 +25,7 @@ function App() {
         <AddressInput setFocusedNft={setFocusedNft} onRestart={onRestart}></AddressInput>
       </div>
 
-      <div id="canvas-container">
+      <div className='border-emerald-100 border-2 absolute top-0 h-screen w-screen -z-10'>
         <Canvas>
           <QueryClientProvider client={queryClient}>
             <NftGroup initialPos={[0, 0, 0]} setFocusedNft={setFocusedNft} startedAt={startedAt} />
