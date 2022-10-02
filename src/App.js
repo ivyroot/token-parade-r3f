@@ -28,7 +28,7 @@ function App() {
       </div>
       <AddressInput setFocusedNft={setFocusedNft} onRestart={onRestart}></AddressInput>
 
-      <div className='border-emerald-100 border-2 absolute top-0 h-screen w-screen -z-10'>
+      <div className='absolute top-0 h-screen w-screen -z-10'>
         <Canvas>
           <DefaultCamera />
           <OrbitControls />
