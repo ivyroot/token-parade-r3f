@@ -19,15 +19,13 @@ function App() {
   }
   return (
     <>
-      <div className='flex'>
+      <div className=''>
         <h1 className='mx-8 my-2'>Token Parade</h1>
       </div>
-      <div className=''>
+      <div className='absolute top-10 left-0'>
         <ParadeInfo focusedNft={focusedNft} />
       </div>
-      <div className='flex justify-center'>
-        <AddressInput setFocusedNft={setFocusedNft} onRestart={onRestart}></AddressInput>
-      </div>
+      <AddressInput setFocusedNft={setFocusedNft} onRestart={onRestart}></AddressInput>
 
       <div className='border-emerald-100 border-2 absolute top-0 h-screen w-screen -z-10'>
         <Canvas>

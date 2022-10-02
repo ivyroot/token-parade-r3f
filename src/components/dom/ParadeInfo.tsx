@@ -9,7 +9,7 @@ export const ParadeInfo = (params) => {
     const ensLookup = UseEns(address)
     const paradeOwnerName = (ensLookup && ensLookup.displayName) ? ensLookup.displayName : null
     const paradeFor = paradeOwnerName ? ` for ${paradeOwnerName}`: ''
-    const description = address ? `Token Parade${paradeFor}!` : 'Enter an Ethereum address to start NFT parade'
+    const description = address ? `Token Parade${paradeFor}!` : ''
     return (
         <div className='text-s md:text-base text-gray-50'>
             <div className='mx-8 my-2 text-slate-400'>{description}</div>
