@@ -11,6 +11,8 @@ export interface ParadeState {
     setIsLoading: (val: boolean) => void
     displayInput: boolean
     setDisplayInput: (val: boolean) => void
+    tokenCount: number
+    setTokenCount: (val: number) => void
 }
 
 export const UseParadeState = create<ParadeState>((set) => ({
@@ -24,4 +26,6 @@ export const UseParadeState = create<ParadeState>((set) => ({
     setIsLoading: (val: boolean) => set((state) => ({ isLoading: val })),
     displayInput: true,
     setDisplayInput: (val: boolean) => set((state) => ({ displayInput: val })),
+    tokenCount: 0,
+    setTokenCount: (val: number) => set((state) => ({ tokenCount: val }))
 }))

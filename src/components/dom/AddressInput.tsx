@@ -9,6 +9,7 @@ export const AddressInput = (props) => {
   const setIsLoading = UseParadeState((state) => state.setIsLoading)
   const displayInput = UseParadeState((state) => state.displayInput)
   const setDisplayInput = UseParadeState((state) => state.setDisplayInput)
+  const setTokenCount = UseParadeState((state) => state.setTokenCount)
 
   const startParade = () => {
     if (addressInput !== addressValue) {
@@ -22,6 +23,7 @@ export const AddressInput = (props) => {
 
   const chooseNewParade = () => {
     setAddressValue(null)
+    setTokenCount(0)
     setDisplayInput(true)
   }
   

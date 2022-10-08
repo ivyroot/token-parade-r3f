@@ -68,6 +68,7 @@ export const UseAddressTokens = (address: string | null): NftTokenResponse => {
     const fetchTokens = (url: string | null) => callSimpleHashAPI(url).then((res) => res.json());
     const setIsLoading = UseParadeState((state) => state.setIsLoading)
     const setDisplayInput = UseParadeState((state) => state.setDisplayInput)
+    const setTokenCount = UseParadeState((state) => state.setTokenCount)
 
     const queryKey1 = address ? `tokensPage1${address}` : 'tokensPageBlank';
     const urlStart = address ? `https://api.simplehash.com/api/v0/nfts/owners?chains=ethereum&wallet_addresses=${address}` : null;
@@ -99,6 +100,7 @@ export const UseAddressTokens = (address: string | null): NftTokenResponse => {
     if (address && (!data.next || dataPageTwo)) {
         setIsLoading(false)
         setDisplayInput(false)
+        setTokenCount(tokens.length)
     }
 
     return { status: "success", nfts: tokens };
