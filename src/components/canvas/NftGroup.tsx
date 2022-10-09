@@ -19,7 +19,7 @@ export const NftGroup = (props) => {
 
     useFrame((state, delta) => {
         if (groupMesh.current) {
-            groupMesh.current.position.z = groupMesh.current.position.z += (delta * 0.33)
+            groupMesh.current.position.z = groupMesh.current.position.z += (delta * 0.4)
         }
     })
     const paradeOwner = UseParadeState((state) => state.addressValue)
