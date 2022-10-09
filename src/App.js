@@ -40,10 +40,10 @@ function App() {
 
       <div className='absolute bottom-0 left-0 flex'>
         <a href='https://twitter.com/ivyrootcode' target='_none'>
-          <img src='/Twitter-circle-blue.svg' className='opacity-75 w-10 h-10 ml-4 my-3' alt='Twitter' />
+          <img src='/Twitter-circle-blue.svg' className='opacity-75 w-8 h-8 ml-4 my-3' alt='Twitter' />
         </a>
         <a href='https://github.com/ivyroot/token-parade-r3f' target='_none'>
-          <img src='/github-circle-black.png' className='opacity-60 w-10 h-10 ml-4 my-3' alt='GitHub' />
+          <img src='/github-circle-black.png' className='opacity-60 w-8 h-8 ml-4 my-3' alt='GitHub' />
         </a>
       </div>
     </>
