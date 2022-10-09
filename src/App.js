@@ -1,6 +1,4 @@
-import logo from './logo.svg';
 import './App.css';
-import ReactDOM from 'react-dom'
 import { useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
@@ -21,7 +19,7 @@ function App() {
   return (
     <>
       <div className=''>
-        <h1 className='mx-8 my-2'>Token Parade</h1>
+        <h1 className='mx-8 my-2 font-bold'>Token Parade</h1>
       </div>
       <div className='absolute top-10 left-0'>
         <ParadeInfo focusedNft={focusedNft} />
@@ -38,6 +36,15 @@ function App() {
             <pointLight position={[10, 10, 10]} />
           </QueryClientProvider>
         </Canvas>
+      </div>
+
+      <div className='absolute bottom-0 left-0 flex'>
+        <a href='https://twitter.com/ivyrootcode' target='_none'>
+          <img src='/Twitter-circle-blue.svg' className='opacity-75 w-10 h-10 ml-4 my-3' alt='Twitter' />
+        </a>
+        <a href='https://github.com/ivyroot/token-parade-r3f' target='_none'>
+          <img src='/github-circle-black.png' className='opacity-60 w-10 h-10 ml-4 my-3' alt='GitHub' />
+        </a>
       </div>
     </>
   );

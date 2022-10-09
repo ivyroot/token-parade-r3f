@@ -13,7 +13,7 @@ export const ParadeInfo = (params) => {
     const paradeFor = paradeOwnerName ? ` for ${paradeOwnerName}`: ''
     const description = address ? `Token Parade${paradeFor}!` : ''
     const instructions = address ? `Click & drag to rotate` : ''
-    const tokenCountNumber = (tokenCount == MaxTokens) ? `> ${tokenCount}` : `${tokenCount}`
+    const tokenCountNumber = (tokenCount === MaxTokens) ? `> ${tokenCount}` : `${tokenCount}`
     const tokenCountDesc = (address && tokenCount) ? `${tokenCountNumber} NFTs` : ''
     return (
         <div className='text-s md:text-base text-gray-50'>
