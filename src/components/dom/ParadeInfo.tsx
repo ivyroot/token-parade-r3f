@@ -1,6 +1,7 @@
 import { UseParadeState  } from '../../hooks/UseParadeState'
 import { TokenInfo } from './TokenInfo'
 import { UseEns } from '../../hooks/UseEns'
+import { MaxTokens } from '../../hooks/UseAddressTokens'
 
 export const ParadeInfo = (params) => {
     const address = UseParadeState((state) => state.addressValue)
@@ -12,7 +13,8 @@ export const ParadeInfo = (params) => {
     const paradeFor = paradeOwnerName ? ` for ${paradeOwnerName}`: ''
     const description = address ? `Token Parade${paradeFor}!` : ''
     const instructions = address ? `Click & drag to rotate` : ''
-    const tokenCountDesc = (address && tokenCount) ? `${tokenCount} NFTs` : ''
+    const tokenCountNumber = (tokenCount == MaxTokens) ? `> ${tokenCount}` : `${tokenCount}`
+    const tokenCountDesc = (address && tokenCount) ? `${tokenCountNumber} NFTs` : ''
     return (
         <div className='text-s md:text-base text-gray-50'>
             <div className='mx-8 my-2 text-slate-400'>{description}</div>
