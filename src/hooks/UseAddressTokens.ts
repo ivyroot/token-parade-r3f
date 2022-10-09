@@ -76,7 +76,7 @@ export const UseAddressTokens = (address: string | null): NftTokenResponse => {
     const setTokenCount = UseParadeState((state) => state.setTokenCount)
     const queryKey1 = address ? `tokensPage1${address}` : 'tokensPageBlank';
     const urlStart = address ? `https://api.simplehash.com/api/v0/nfts/owners?chains=ethereum&wallet_addresses=${address}` : null;
-    const { isLoading, isError, data, error } = useQuery([queryKey1], () => fetchTokens(urlStart));
+    const { isLoading, isError, data, error } = useQuery([queryKey1], () => fetchTokens(urlStart), {staleTime: 1000 * 60 * 60 * 24})
     if (isLoading) {
         return { status: "progress", nfts: null };
     }
