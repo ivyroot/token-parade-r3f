@@ -12,9 +12,14 @@ const queryClient = new QueryClient()
 
 function App() {
   const [focusedNft, setFocusedNft] = useState(null)
+  const [moving, setMoving] = useState(true)
   const [startedAt, setStartedAt] = useState(Date.now())
   const onRestart = () => {
     setStartedAt(Date.now())
+  }
+  const [jumpOffset, setJumpOffset] = useState(0)
+  const jumpPlaybackPosition = (amount) => {
+    setJumpOffset(amount)
   }
   return (
     <>
@@ -24,14 +29,14 @@ function App() {
       <div className='absolute top-10 left-0'>
         <ParadeInfo focusedNft={focusedNft} />
       </div>
-      <AddressInput setFocusedNft={setFocusedNft} onRestart={onRestart}></AddressInput>
+      <AddressInput setFocusedNft={setFocusedNft} onRestart={onRestart} moving={moving} setMoving={setMoving} currentJumpOffset={jumpOffset} jumpPlaybackPosition={jumpPlaybackPosition} ></AddressInput>
 
       <div className='absolute top-0 h-screen w-screen -z-10'>
         <Canvas>
           <DefaultCamera />
           <OrbitControls />
           <QueryClientProvider client={queryClient}>
-            <NftGroup initialPos={[0, 0, 0]} setFocusedNft={setFocusedNft} startedAt={startedAt} />
+            <NftGroup initialPos={[0, 0, 0]} setFocusedNft={setFocusedNft} startedAt={startedAt} moving={moving} jumpOffset={jumpOffset} />
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
           </QueryClientProvider>

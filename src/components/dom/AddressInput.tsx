@@ -1,4 +1,5 @@
 import { UseParadeState  } from '../../hooks/UseParadeState'
+import { PlaybackControls } from './PlaybackControls'
 import { useSpring, animated } from 'react-spring'
 
 export const AddressInput = (props) => {
@@ -34,7 +35,7 @@ export const AddressInput = (props) => {
   }
   const styles = useSpring({ 
     left: displayInput ? '50%' : '50%',
-    bottom: displayInput ? '50%' : '3%',
+    bottom: displayInput ? '50%' : '0%',
     transform: 'translate(-50%, -50%)'
   })
 
@@ -58,9 +59,10 @@ export const AddressInput = (props) => {
           </div>
         </div>
         <div className={runningClass}>
-          <div className='flex'>
-            <button className='m-2' onClick={startParade}>Restart</button>
-            <button className='m-2' onClick={chooseNewParade}>New</button>
+          <PlaybackControls {...props} />
+          <div className='flex justify-center'>
+            <button className='m-2' onClick={startParade}><img src='/ic-restart.svg' alt='restart parade' /></button>
+            <button className='my-2 mx-4' onClick={chooseNewParade}><img  src='/ic-eject.svg' alt='new parade' /></button>
           </div>
         </div>
     </animated.div>
