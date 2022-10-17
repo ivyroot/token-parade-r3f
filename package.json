@@ -26,7 +26,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy-prod": "aws s3 --profile=$WEB3_PROFILE cp --recursive build/ s3://www.tokenparade.xyz"
   },
   "eslintConfig": {
     "extends": [
