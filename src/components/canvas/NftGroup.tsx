@@ -9,6 +9,7 @@ import { UseAddressTokens } from '../../hooks/UseAddressTokens'
 export const NftGroup = (props) => {
     const groupMesh = useRef(null);
     const initialPos = props.initialPos ?  props.initialPos : [0, 0, 0]
+    const moving = props.moving
     const [startTime, setstartTime] = useState(Date.now());
     if (props.startedAt && props.startedAt !== startTime) {
         if (groupMesh.current) {
@@ -18,7 +19,7 @@ export const NftGroup = (props) => {
     }
 
     useFrame((state, delta) => {
-        if (groupMesh.current) {
+        if (moving && groupMesh.current) {
             groupMesh.current.position.z = groupMesh.current.position.z += (delta * 0.4)
         }
     })
