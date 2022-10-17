@@ -7,15 +7,23 @@ import { UseEns } from '../../hooks/UseEns'
 import { UseAddressTokens } from '../../hooks/UseAddressTokens'
 
 export const NftGroup = (props) => {
+    const moving = props.moving
+    const jumpOffset = props.jumpOffset
     const groupMesh = useRef(null);
     const initialPos = props.initialPos ?  props.initialPos : [0, 0, 0]
-    const moving = props.moving
     const [startTime, setstartTime] = useState(Date.now());
     if (props.startedAt && props.startedAt !== startTime) {
         if (groupMesh.current) {
             groupMesh.current.position.z = 0;
         }
         setstartTime(props.startedAt);
+    }
+    const [localOffset, setLocalOffset] = useState(0);
+    if (localOffset !== jumpOffset) {
+        if (groupMesh.current) {
+            groupMesh.current.position.z += jumpOffset
+        }
+        setLocalOffset(jumpOffset);
     }
 
     useFrame((state, delta) => {
