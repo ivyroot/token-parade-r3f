@@ -2,7 +2,7 @@
 
 export const PlaybackControls = (props) => {
 
-    const playbackState = props.moving ? 'Pause' : 'Play'
+    const playbackChangeButton = props.moving ? <img src='/ic-pause.svg' alt='pause' /> : <img src='/ic-play.svg' alt='play' />
 
     const togglePlayback = () => {
         if (props.moving) {
@@ -21,10 +21,10 @@ export const PlaybackControls = (props) => {
     }
 
     return (
-        <div className='flex'>
-            <button className='mx-4' onClick={jumpBack}> Back  </button>
-            <button className='mx-4' onClick={togglePlayback}>{playbackState}</button>
-            <button className='mx-4' onClick={jumpForward}> Fwd  </button>
+        <div className='flex my-2'>
+            <button className='mx-4' onClick={jumpBack}><img src='/ic-fast-backward.svg' alt='fast backward' /></button>
+            <button className='mx-4' onClick={togglePlayback}>{playbackChangeButton}</button>
+            <button className='mx-4' onClick={jumpForward}><img src='/ic-fast-forward.svg' alt='fast forward' /></button>
         </div>
     )
 
