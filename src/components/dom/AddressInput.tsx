@@ -27,13 +27,13 @@ export const AddressInput = (props) => {
     setTokenCount(0)
     setDisplayInput(true)
   }
-  
+
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       startParade()
     }
   }
-  const styles = useSpring({ 
+  const styles = useSpring({
     left: displayInput ? '50%' : '50%',
     bottom: displayInput ? '50%' : '0%',
     transform: 'translate(-50%, -50%)'
@@ -43,19 +43,19 @@ export const AddressInput = (props) => {
   const runningClass = displayInput ? 'hidden' : 'block'
 
   return (
-    <animated.div style={styles} className='absolute px-6 py-2 shadow-xl text-gray-800 bg-gray-300 rounded-lg'>
+    <animated.div style={styles} className='absolute px-3 py-2 shadow-xl text-gray-800 bg-gray-300 rounded-lg'>
         <div className={inputClass}>
           <h2 className='text-xl text-center my-4'>Enter Ethereum address to start token parade</h2>
           <div className='flex items-center pt-2 mb-4'>
-              <input 
-                type="text" 
-                className='inline p-2 mx-2 text-sm text-slate-800 md:w-96'
-                placeholder='0x123abc456...' 
-                value={addressInput} 
-                onChange={(e) => {setAddressInput(e.target.value)}} 
-                onKeyDown={handleKeyDown} 
+              <input
+                type="text"
+                className='inline p-2 mx-2 text-sm text-slate-800 md:w-96 rounded-md'
+                placeholder='0x123abc456...'
+                value={addressInput}
+                onChange={(e) => {setAddressInput(e.target.value)}}
+                onKeyDown={handleKeyDown}
               />
-              <button className='mx-4' onClick={startParade}>Go!</button>
+              <button className='mx-4 px-3 py-2  bg-blue-300 rounded-md' onClick={startParade}>Go!</button>
           </div>
         </div>
         <div className={runningClass}>

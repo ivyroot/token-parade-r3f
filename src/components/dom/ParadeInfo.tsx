@@ -21,7 +21,7 @@ export const ParadeInfo = (params) => {
             <div className='mx-8 my-2 text-slate-400'>{tokenCountDesc}</div>
             <div className='mx-8 my-2 text-slate-400'>{loadingMsg}</div>
             <TokenInfo token={params.focusedNft} />
-            <div className='fixed top-1 right-2 mx-8 my-2 text-pink-400'>{instructions}</div>
+            <div className='fixed top-1 right-2 hidden md:block mx-8 my-2 text-pink-400'>{instructions}</div>
         </div>
     )
 }

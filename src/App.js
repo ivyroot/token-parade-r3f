@@ -24,9 +24,9 @@ function App() {
   return (
     <>
       <div className=''>
-        <h1 className='mx-8 my-2 font-bold'>Token Parade</h1>
+        <h1 className='mx-8 mt-8 md:mt-2 font-bold'>Token Parade</h1>
       </div>
-      <div className='absolute top-10 left-0'>
+      <div className='absolute top-14 md:top-10 left-0'>
         <ParadeInfo focusedNft={focusedNft} />
       </div>
       <AddressInput setFocusedNft={setFocusedNft} onRestart={onRestart} moving={moving} setMoving={setMoving} currentJumpOffset={jumpOffset} jumpPlaybackPosition={jumpPlaybackPosition} ></AddressInput>

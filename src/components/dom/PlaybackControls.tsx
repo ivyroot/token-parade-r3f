@@ -2,29 +2,38 @@
 
 export const PlaybackControls = (props) => {
 
-    const playbackChangeButton = props.moving ? <img src='/ic-pause.svg' alt='pause' /> : <img src='/ic-play.svg' alt='play' />
+    const playbackChangeButton = props.moving ? <img src='/ic-pause.svg' alt='pause' className="w-32 lg:w-8" /> : <img src='/ic-play.svg' alt='play'  className="w-32 lg:w-8"  />
 
-    const togglePlayback = () => {
+    const togglePlayback = (e) => {
+        e.preventDefault()
         if (props.moving) {
             props.setMoving(false)
-        } else {            
+        } else {
             props.setMoving(true)
         }
     }
 
-    const jumpBack = () => {
+    const jumpBack = (e) => {
+        e.preventDefault()
         props.jumpPlaybackPosition((props.currentJumpOffset === -5.0) ? -5.1 : -5.0)
     }
 
-    const jumpForward = () => {
+    const jumpForward = (e) => {
+        e.preventDefault()
         props.jumpPlaybackPosition((props.currentJumpOffset === 5.0) ? 5.1 : 5.0)
     }
 
     return (
-        <div className='flex my-2'>
-            <button className='mx-4' onClick={jumpBack}><img src='/ic-fast-backward.svg' alt='fast backward' /></button>
-            <button className='mx-4' onClick={togglePlayback}>{playbackChangeButton}</button>
-            <button className='mx-4' onClick={jumpForward}><img src='/ic-fast-forward.svg' alt='fast forward' /></button>
+        <div className='flex items-center my-2'>
+            <a href='#' className='block px-1' onClick={jumpBack}>
+                <img src='/ic-fast-backward.svg' alt='fast backward' className="w-32 lg:w-8" />
+            </a>
+            <a href='#' className='block px-1' onClick={togglePlayback}>
+                {playbackChangeButton}
+            </a>
+            <a href='#' className='block px-1' onClick={jumpForward}>
+                <img src='/ic-fast-forward.svg' alt='fast forward' className="w-32 lg:w-8" />
+            </a>
         </div>
     )
 
