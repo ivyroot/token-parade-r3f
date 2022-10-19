@@ -60,7 +60,7 @@ export const AddressInput = (props) => {
         </div>
         <div className={runningClass}>
           <PlaybackControls {...props} />
-          <div className='flex justify-center'>
+          <div className='flex justify-around'>
             <button className='m-2' onClick={startParade}><img src='/ic-restart.svg' alt='restart parade' /></button>
             <button className='my-2 mx-4' onClick={chooseNewParade}><img  src='/ic-eject.svg' alt='new parade' /></button>
           </div>
