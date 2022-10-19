@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { UseParadeState  } from '../hooks/UseParadeState'
 
-export const MaxPages = 5
+export const MaxPages = 6
 export const MaxTokens = MaxPages * 50
 
 export interface NftTokenInfo {
@@ -84,7 +84,7 @@ export const UseAddressTokens = (address: string | null): NftTokenResponse => {
         return { status: "error", nfts: null };
     }
     const tokens = data
-    .map(a => parseSimpleHashInfo(a, address))   
+    .map(a => parseSimpleHashInfo(a, address))
     .sort((a, b) => a.purchaseTimestamp - b.purchaseTimestamp)
     if (address) {
         setIsLoading(false)

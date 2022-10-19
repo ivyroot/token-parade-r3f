@@ -36,7 +36,7 @@ export const AddressInput = (props) => {
   const styles = useSpring({
     left: displayInput ? '50%' : '50%',
     bottom: displayInput ? '50%' : '0%',
-    transform: 'translate(-50%, -50%)'
+    transform: 'translate(-50%, -15%)'
   })
 
   const inputClass = displayInput ? 'block' : 'hidden'
