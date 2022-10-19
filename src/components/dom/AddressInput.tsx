@@ -16,6 +16,7 @@ export const AddressInput = (props) => {
     if (addressInput !== addressValue) {
       setAddressValue(addressInput)
       setIsLoading(true)
+      window.scrollTo(0, 0)
     } else {
       props.onRestart();
     }
