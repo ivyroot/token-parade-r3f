@@ -15,7 +15,11 @@ export const NftDisplay = (props) => {
     }
     const osUrl = `https://opensea.io/assets/${props.tokenInfo.chain}/${props.tokenInfo.contractAddress}/${props.tokenInfo.tokenId}`;
     const handleClicked = () => {
-        window.open(osUrl, '_blank');
+        if (props.isTouchDevice) {
+            props.setFocusedNft(props.tokenInfo);
+        } else {
+            window.open(osUrl, '_blank');
+        }
     }
     const imageUrl: string = props.tokenInfo.previewImageMedium ? props.tokenInfo.previewImageMedium : '/Basic_square.svg';
     const colorMap = useLoader(TextureLoader, imageUrl);

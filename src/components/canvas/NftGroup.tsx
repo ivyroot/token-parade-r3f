@@ -7,6 +7,7 @@ import { UseEns } from '../../hooks/UseEns'
 import { UseAddressTokens } from '../../hooks/UseAddressTokens'
 
 export const NftGroup = (props) => {
+    const isTouchDevice = (('ontouchstart' in window) ||(navigator.maxTouchPoints > 0))
     const moving = props.moving
     const jumpOffset = props.jumpOffset
     const groupMesh = useRef(null);
@@ -49,13 +50,13 @@ export const NftGroup = (props) => {
         const columnOffset = column * 3.5 - 3.5;
         const row = Math.floor(index / 3);
         const rowOffset = row * -4;
-        return <NftDisplay key={tokenInfo.id} setFocusedNft={props.setFocusedNft} tokenInfo={tokenInfo} initialPos={[columnOffset, 0, rowOffset]} />
+        return <NftDisplay key={tokenInfo.id} setFocusedNft={props.setFocusedNft} tokenInfo={tokenInfo} initialPos={[columnOffset, 0, rowOffset]} isTouchDevice={isTouchDevice} />
     })
     return (
         <>
             <group ref={groupMesh} position={initialPos}>
                 {nftDisplayArray}
             </group>
-        </>        
+        </>
     );
 }

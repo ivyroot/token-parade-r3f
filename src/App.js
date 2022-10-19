@@ -7,10 +7,17 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { NftGroup } from './components/canvas/NftGroup'
 import { ParadeInfo } from './components/dom/ParadeInfo'
 import { DefaultCamera } from './components/canvas/DefaultCamera'
+import { UseParadeState  } from './hooks/UseParadeState'
+import { UseEns } from './hooks/UseEns'
 
 const queryClient = new QueryClient()
 
 function App() {
+  const address = UseParadeState((state) => state.addressValue)
+  const ensLookup = UseEns(address)
+  const paradeOwnerName = (ensLookup && ensLookup.displayName) ? ensLookup.displayName : null
+  const paradeFor = paradeOwnerName ? ` for ${paradeOwnerName}`: ''
+  const title = address ? `Token Parade${paradeFor}!` : 'Token Parade!'
   const [focusedNft, setFocusedNft] = useState(null)
   const [moving, setMoving] = useState(true)
   const [startedAt, setStartedAt] = useState(Date.now())
@@ -24,9 +31,9 @@ function App() {
   return (
     <>
       <div className=''>
-        <h1 className='mx-8 mt-8 md:mt-2 font-bold'>Token Parade</h1>
+        <h1 className='mx-8 mt-4 md:mt-2 font-bold'>{title}</h1>
       </div>
-      <div className='absolute top-14 md:top-10 left-0'>
+      <div className='absolute top-10 left-0'>
         <ParadeInfo focusedNft={focusedNft} />
       </div>
       <AddressInput setFocusedNft={setFocusedNft} onRestart={onRestart} moving={moving} setMoving={setMoving} currentJumpOffset={jumpOffset} jumpPlaybackPosition={jumpPlaybackPosition} ></AddressInput>
