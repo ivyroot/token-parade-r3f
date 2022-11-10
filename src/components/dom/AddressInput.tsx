@@ -1,12 +1,14 @@
 import { UseParadeState  } from '../../hooks/UseParadeState'
 import { PlaybackControls } from './PlaybackControls'
 import { useSpring, animated } from 'react-spring'
+import { useRef, useEffect } from 'react'
 
 export const AddressInput = (props) => {
   const addressInput = UseParadeState((state) => state.addressInput)
   const setAddressInput = UseParadeState((state) => state.setAddressInput)
   const addressValue = UseParadeState((state) => state.addressValue)
   const setAddressValue = UseParadeState((state) => state.setAddressValue)
+  const autoloadAddressInput = useRef(null)
   const setIsLoading = UseParadeState((state) => state.setIsLoading)
   const displayInput = UseParadeState((state) => state.displayInput)
   const setDisplayInput = UseParadeState((state) => state.setDisplayInput)
@@ -42,6 +44,19 @@ export const AddressInput = (props) => {
 
   const inputClass = displayInput ? 'block' : 'hidden'
   const runningClass = displayInput ? 'hidden' : 'block'
+
+  useEffect(() => {
+    // load address from URL if present
+    const params = new URLSearchParams(window.location.search);
+      const preloadAddress = params.get('a')
+      if (preloadAddress !== 'undefined' && preloadAddress !== null && !autoloadAddressInput.current) {
+        autoloadAddressInput.current = preloadAddress
+        setAddressInput(preloadAddress)
+        setAddressValue(preloadAddress)
+        setIsLoading(true)
+        window.scrollTo(0, 0)
+      }
+  }, [])
 
   return (
     <animated.div style={styles} className='absolute px-3 py-2 shadow-xl text-gray-800 bg-gray-300 rounded-lg'>
