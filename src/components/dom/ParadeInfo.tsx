@@ -1,6 +1,7 @@
 import { UseParadeState  } from '../../hooks/UseParadeState'
 import { TokenInfo } from './TokenInfo'
 import { MaxTokens } from '../../hooks/UseAddressTokens'
+import { ParadeLink } from './ParadeLink'
 
 export const ParadeInfo = (params) => {
     const address = UseParadeState((state) => state.addressValue)
@@ -12,6 +13,7 @@ export const ParadeInfo = (params) => {
     const tokenCountDesc = (address && tokenCount) ? `${tokenCountNumber} NFTs` : ''
     return (
         <div className='text-s md:text-base text-gray-50'>
+            <ParadeLink a={address} />
             <div className='mx-8 my-2 hidden md:block text-slate-400'>{tokenCountDesc}</div>
             <div className='mx-8 my-2 text-slate-400'>{loadingMsg}</div>
             <TokenInfo token={params.focusedNft} />
