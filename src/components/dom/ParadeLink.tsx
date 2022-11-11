@@ -1,8 +1,3 @@
-// tsx div showing external link
-// Path: src/components/dom/ParadeLink.tsx
-// Compare this snippet from src/components/dom/AddressInput.tsx:
-//             <div className='flex flex-row justify-between'>
-//               <div className='flex flex-row'>
 export const ParadeLink = (props) => {
     const link = props.a ? `https://www.tokenparade.xyz/?a=${props.a}` : ''
     const linkText = props.a ? `www.tokenparade.xyz/?a=${props.a}` : ''
