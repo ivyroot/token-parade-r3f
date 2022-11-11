@@ -2,9 +2,13 @@ import { UseParadeState  } from '../../hooks/UseParadeState'
 import { TokenInfo } from './TokenInfo'
 import { MaxTokens } from '../../hooks/UseAddressTokens'
 import { ParadeLink } from './ParadeLink'
+import { UseEns } from '../../hooks/UseEns'
 
 export const ParadeInfo = (params) => {
     const address = UseParadeState((state) => state.addressValue)
+    const ensLookup = UseEns(address)
+    const paradeOwnerName = (ensLookup && ensLookup.displayName) ? ensLookup.displayName : null
+    const paradeFor = paradeOwnerName ? paradeOwnerName : address
     const isLoading = UseParadeState((state) => state.isLoading)
     const tokenCount = UseParadeState((state) => state.tokenCount)
     const loadingMsg = isLoading ? 'Loading...' : ''
@@ -13,7 +17,7 @@ export const ParadeInfo = (params) => {
     const tokenCountDesc = (address && tokenCount) ? `${tokenCountNumber} NFTs` : ''
     return (
         <div className='text-s md:text-base text-gray-50'>
-            <ParadeLink a={address} />
+            <ParadeLink a={paradeFor} />
             <div className='mx-8 my-2 hidden md:block text-slate-400'>{tokenCountDesc}</div>
             <div className='mx-8 my-2 text-slate-400'>{loadingMsg}</div>
             <TokenInfo token={params.focusedNft} />
